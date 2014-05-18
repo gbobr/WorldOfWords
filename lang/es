@@ -1,0 +1,23 @@
+CMD_EXIT="@(salir)"
+CMD_HELP="@(ayuda)"
+CMD_LOOK="@(mirar|observar)"
+CMD_PICKUP="@(agarrar|tomar|coger)"
+CMD_INVENTORY="@(inventario)"
+CMD_USE="@(usar|utilizar|aplicar|use|uso|golpear)"
+CMD_EDIT="@(editar)"
+CMD_SHELL="@(shell|bash|terminal|consola)"
+CMD_CHAT="@(decir)"
+CMD_GO="@(ir|entrar)"
+CMD_SHOUT="@(gritar)"
+
+LANG_PROMPT="\n-Que vas a hacer?-: "
+LANG_WELLCOME_MESSAGE='* Entrando en World of Words... *'
+LANG_HELP_MESSAGE='Comandos disponibles: mirar salir shell'
+LANG_LOOK_AROUND='\* -Vuelves a mirar a tu alrededor- \*'
+LANG_NO_SUCH_OBJECT='\* -No reconozco ese objeto-... \*'
+LANG_NO_SUCH_PLACE='\e[2mNo comprendo a donde quieres ir...\e[0m'
+LANG_NOT_SUCH_ITEM='-No encuentras nada parecido a- *$ITEMNAME* -al rededor-...'
+LANG_INVENTORY_HEADER='-En tu inventario llevas-:'
+LANG_INVENTORY_EMPTY='-Tu inventario está vacío-'
+LANG_SAYS='dice'
+LANG_HEAR_SHOUTS='Oyes gritos'

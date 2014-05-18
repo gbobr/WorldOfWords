@@ -1,0 +1,8 @@
+.chat
+.users
+users/*
+world/*
+items/*
+!.delete.me
+!items/.item_template
+!world/description
