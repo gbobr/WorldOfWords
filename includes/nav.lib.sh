@@ -31,34 +31,50 @@ function enter_room(){
 	PEOPLECOUNT=$(wc -l < .users)
 	if test $PEOPLECOUNT -gt 1
 	then
-		print_formatted "\n-A tu alrededor puedes ver a otras -$PEOPLECOUNT- personas-..."
+		print_formatted "$LANG_PEOPLE_ARROUND"
 	fi
-	
+
+	LAST_LOCATION=$(pwd)
+
+	save_profile	
 	init_chat
 	
 }
 
 function print_description() {
-	print_formatted "$(<description)"
+	if test -f description
+	then
+		print_formatted "$(<description)"
+	fi
 }
 
-function create_room(){
+function create_place(){
 
-	if test -n $ADMIN; then
-		echo "El lugar ingresado no existe, deseas crearlo? [s/n]"
-		read CONF
-		if test $CONF = "s"; then
-			mkdir $1
-			vim $1/description
-			echo "Desea agregar una acción para volver? [s/n]"
-			read CONF
-			if test $CONF = "s"; then
-				echo "Ingrese el nombre de la acción de volver: "
-				read ACTION
-				ln -s .. $1/$ACTION
-			fi 
-			enter_room $1
+		if test -z $1
+		then
+			print_formatted "$LANG_INVALID_ARGUMENT"
+			return 1
 		fi
-	fi
+			
+		if test -d $1
+		then
+			print_formatted "$LANG_PLACE_EXISTS"
+			return 1
+		fi
+				
+		mkdir $1
+		vim $1/description
+		print_formatted "$LANG_CREATE_BACK_ACTION"
+		read CONF
+		if test "$CONF" = "$INPUT_YES"; then
+			echo "$LANG_INPUT_BACK_ACTION_NAME"
+			read ACTION
+			if test -z "$ACTION"
+			then
+				ACTION="$LANG_DEFAULT_BACK_ACTION"
+			fi
+
+			ln -s .. $1/$ACTION
+		fi 
 
 }

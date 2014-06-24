@@ -29,7 +29,7 @@ function get_input() {
 	tput sc
 	pause_chat
 	print_formatted "$1"
-	read -e Command Params
+	read Command Params
 	DirtyParams="$Params"
 	sanitize Command
 	sanitize Params

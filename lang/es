@@ -1,3 +1,6 @@
+INPUT_YES="@(s|S|si|Si)"
+INPUT_NO="@(n|N|no|No)"
+
 CMD_EXIT="@(salir)"
 CMD_HELP="@(ayuda)"
 CMD_LOOK="@(mirar|observar)"
@@ -9,6 +12,8 @@ CMD_SHELL="@(shell|bash|terminal|consola)"
 CMD_CHAT="@(decir)"
 CMD_GO="@(ir|entrar)"
 CMD_SHOUT="@(gritar)"
+CMD_CREATE="@(crear)"
+CMD_CREATE_ITEM="@(item|objeto)"
 
 LANG_PROMPT="\n-Que vas a hacer?-: "
 LANG_WELLCOME_MESSAGE='* Entrando en World of Words... *'
@@ -21,3 +26,12 @@ LANG_INVENTORY_HEADER='-En tu inventario llevas-:'
 LANG_INVENTORY_EMPTY='-Tu inventario está vacío-'
 LANG_SAYS='dice'
 LANG_HEAR_SHOUTS='Oyes gritos'
+LANG_PEOPLE_AROUND='\n-A tu alrededor puedes ver a otras -$PEOPLECOUNT- personas-...'
+LANG_INVALID_ARGUMENT='Argumentos inválidos, debes especificar el nombre del lugar que quieres crear'
+LANG_PLACE_EXISTS='El lugar $Params ya existe, no puedes crearlo'
+LANG_CREATE_BACK_ACTION='Desea agregar una acción para volver? [s/n]'
+LANG_DEFAULT_BACK_ACTION='volver'
+LANG_INPUT_BACK_ACTION_NAME='Ingrese el nombre de la acción de volver: [$LANG_DEFAULT_BACK_ACTION]'
+LANG_WORLD_LIST_HEADER='Tienes los siguientes mundos a disposición:'
+LANG_WORLD_LIST_EMPTY='No tienes mundos privados, para crear uno, escribe mkw'
+LANG_WORLD_NOT_FOUND='404: Mundo no encontrado!'

@@ -17,7 +17,15 @@ clear
 
 echo "$LANG_WELLCOME_MESSAGE"
 
-enter_room world
+load_profile
+
+echo $LAST_LOCATION
+if test -z "$LAST_LOCATION"
+then
+	LAST_LOCATION="world"
+fi
+
+enter_room $LAST_LOCATION
 read_cmd
 while test "$Command" != "$CMD_EXIT"
 do
@@ -47,6 +55,9 @@ do
 			fi;;
 		$CMD_EXIT) 	exit_room 
 			exit;;
+		lw) list_worlds ;;
+		cw) change_world $Params;;
+		mkworld) mkworld $Params;;
 		$CMD_SHELL) 	if test -n $ADMIN 
 			then 
 				bash 
@@ -69,12 +80,17 @@ do
 				print_formatted "$LANG_NO_SUCH_PLACE"
 			fi
 			;;
-		*)	if test -d $Command #&& test $Command
+		$CMD_CREATE)
+			case "$Params" in
+				$CMD_CREATE_ITEM) create_item;;
+				*) create_place $Params;;
+			esac;;
+		*)	if test -d "$Command" #&& test $Command
 			then
-				enter_room $Command
-			elif test -f $Command && test -x $Command 
+				enter_room "$Command"
+			elif test -f "$Command" && test -x "$Command"
 			then
-				source $Command
+				source "$Command"
 			else
 				print_formatted "$LANG_NO_SUCH_PLACE"
 			fi;;
