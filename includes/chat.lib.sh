@@ -13,15 +13,15 @@ function init_chat() {
 }
 
 function stop_chat(){
-	kill $CHATPID 2>/dev/null
+	kill $CHATPID  &>/dev/null
 }
 
 function pause_chat(){
-	kill -STOP $CHATPID 2>/dev/null
+	kill -STOP $CHATPID &>/dev/null
 }
 
 function continue_chat() {
-	kill -CONT $CHATPID 2>/dev/null
+	kill -CONT $CHATPID &>/dev/null
 }
 
 function get_input() {

@@ -13,7 +13,7 @@ function enter_room(){
 	exit_room
 	clear
 	cd $1
-
+	clear
 	if test -f description; then
 		print_description
 	else
@@ -66,7 +66,9 @@ function create_place(){
 		vim $1/description
 		print_formatted "$LANG_CREATE_BACK_ACTION"
 		read CONF
-		if test "$CONF" = "$INPUT_YES"; then
+
+		case "$CONF" in
+			$INPUT_YES)
 			echo "$LANG_INPUT_BACK_ACTION_NAME"
 			read ACTION
 			if test -z "$ACTION"
@@ -74,7 +76,7 @@ function create_place(){
 				ACTION="$LANG_DEFAULT_BACK_ACTION"
 			fi
 
-			ln -s .. $1/$ACTION
-		fi 
+			ln -s .. $1/$ACTION;;
+		esac
 
 }

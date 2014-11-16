@@ -56,8 +56,8 @@ do
 		$CMD_EXIT) 	exit_room 
 			exit;;
 		lw) list_worlds ;;
-		cw) change_world $Params;;
-		mkworld) mkworld $Params;;
+		cw) world_change $Params ;;
+		mkworld) mkworld $Params ;;
 		$CMD_SHELL) 	if test -n $ADMIN 
 			then 
 				bash 

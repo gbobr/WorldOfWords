@@ -16,6 +16,7 @@ function sanitize() {
 
 function load_profile() {
 	USERPATH="$HOME/.worldofwords"
+	USERPUBLICPATH="$USERWORLDS_PATH/$USER"
 	if test -d $USERPATH
 	then
 		if test -f $USERPATH/profile
@@ -38,12 +39,20 @@ function save_profile(){
 }
 
 function list_worlds(){
-	if test -d $USERPATH/worlds
+	print_formatted "$LANG_PUBLIC_WORLDS"
+	_internal_list_worlds $BASEPATH
+	print_formatted "$LANG_PERSONAL_WORLDS"
+	_internal_list_worlds $USERPATH
+}
+
+function _internal_list_worlds(){
+	WORLDSPATH=$1/worlds
+	if test -d $WORLDSPATH
 	then
-		cd $USERPATH/worlds
-		WORLDS=$(ls)
+		cd $WORLDSPATH
+		#WORLDS=$(ls)
 		print_formatted "$LANG_WORLD_LIST_HEADER"
-		for WORLD in "$WORLDS"
+		for WORLD in * #"$WORLDS"
 		do
 			print_formatted "\n-\*- *$WORLD*"
 		done
@@ -60,12 +69,39 @@ function mkworld(){
 	enter_room "$WORLD_DIR"
 }
 
-function change_world(){
-	WORLD_DIR="$USERPATH/worlds/$1/world"
+function player_private_world_exists() {
+	WORLD_DIR="$USERPATH/worlds/$1/world"	
+	return test -d "$WORLD_DIR"
+}
+
+funtion player_public_world_exists() {
+	WORLD_DIR="$USERPATH/worlds/$1/world"	
+	return test -d "$USERPUBLICPATH/$1"
+}
+
+function world_change(){
+	WORLD_NAME="worlds/$1/world"
+	WORLD_DIR="$BASEPATH/$WORLD_NAME"
 	if test -d "$WORLD_DIR"
 	then
 		enter_room "$WORLD_DIR"
 	else
-		print_formatted "$LANG_WORLD_NOT_FOUND"
+		WORLD_DIR="$USERPATH/$WORLD_NAME"
+		if test -d "$WORLD_DIR"
+		then
+			enter_room "$WORLD_DIR"
+		else
+			print_formatted "$LANG_WORLD_NOT_FOUND"
+		fi
+	fi
+}
+
+function publish_world(){
+	if player_world_exists "$1"
+	then
+		if public_world_exists $1
+		then
+
+		fi
 	fi
 }

@@ -1,3 +1,6 @@
+INPUT_YES="@(y|Y|yes|Yes|yeah|Yeah)"
+INPUT_NO="@(n|N|no|No)"
+
 CMD_EXIT="@(quit)"
 CMD_HELP="@(help)"
 CMD_LOOK="@(look|observe)"
@@ -26,6 +29,11 @@ LANG_HEAR_SHOUTS="You can hear someone shouting"
 LANG_PEOPLE_AROUND='\n-You can see -$PEOPLECOUNT- people around you-...'
 LANG_INVALID_ARGUMENT='Invalid arguments, you must specify the name of the place you want to create.'
 LANG_PLACE_EXISTS='The place $Params already exists, you can't create it'
-LANG_CREATE_BACK_ACTION='Do you want to create a link to go back? [s/n]'
+LANG_CREATE_BACK_ACTION='Do you want to create a link to go back? [y/n]'
 LANG_DEFAULT_BACK_ACTION='back'
 LANG_INPUT_BACK_ACTION_NAME='Tell me the name of the back action: [$LANG_DEFAULT_BACK_ACTION]'
+LANG_WORLD_LIST_HEADER='The following worlds are available:'
+LANG_WORLD_LIST_EMPTY='You don't have any personal worlds, to create one, write -mkworld-'
+LANG_WORLD_NOT_FOUND='404: World not found!'
+LANG_PUBLIC_WORLDS=" * - Public worlds - * "
+LANG_PRIVATE_WORLDS=" * - Private worlds - * "

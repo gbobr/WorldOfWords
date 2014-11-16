@@ -35,3 +35,5 @@ LANG_INPUT_BACK_ACTION_NAME='Ingrese el nombre de la acción de volver: [$LANG_DE
 LANG_WORLD_LIST_HEADER='Tienes los siguientes mundos a disposición:'
 LANG_WORLD_LIST_EMPTY='No tienes mundos privados, para crear uno, escribe mkw'
 LANG_WORLD_NOT_FOUND='404: Mundo no encontrado!'
+LANG_PUBLIC_WORLDS=" * - Mundos públicos - * "
+LANG_PRIVATE_WORLDS=" * - Mundos privados - * "
